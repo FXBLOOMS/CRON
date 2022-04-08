@@ -42,7 +42,7 @@ namespace FXBLOOMS.CRON
                 q.AddTrigger(opts => opts
                                     .ForJob(jobKey)
                                     .WithIdentity(Guid.NewGuid().ToString())
-                                    .WithCronSchedule("0 0/60 * * * ?"));
+                                    .WithCronSchedule("0 0/30 * * * ?"));
             });
             services.AddQuartzHostedService(q => q.WaitForJobsToComplete = true);
 
