@@ -22,13 +22,14 @@ namespace ApplicationLayer
         {
             lock (lockObject)
             {
-                var expiredListings = _listingRepo.GetExpiredListing().Result;
+                var data = _listingRepo.GetExpiredListing().Result;
+                var expiredListings = data.ToList();
                 Parallel.ForEach(expiredListings, listing =>
                 {
                     listing.RemoveListing();
                 });
 
-                _listingRepo.UpdateListings(expiredListings.ToList());
+                _listingRepo.UpdateListings(expiredListings);
 
                 var expiredBids = _bidRepo.GetExpiredBids().Result;
                 Parallel.ForEach(expiredBids, bid =>

@@ -19,8 +19,8 @@ namespace Repository.Entity
         public DateTime DateFinalized { get; private set; }
         public ListingStatus Status { get; private set; }
 
-        public decimal MinExchangeAmount_Amount { get; private set; }
-        public CurrencyType MinExchangeAmount_CurrencyType { get; private set; }
+        //public decimal MinExchangeAmount_Amount { get; private set; }
+        //public CurrencyType MinExchangeAmount_CurrencyType { get; private set; }
         public decimal ExchangeRate { get; private set; }
         public string ListedBy { get; private set; }
         public Guid CustomerId { get; private set; }

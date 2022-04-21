@@ -18,8 +18,9 @@ namespace Repository.Implementation
         }
         public Task<IQueryable<Listing>> GetExpiredListing()
         {
+            // ||
             DateTime dateTime = DateTime.UtcNow.AddDays(-3);
-            return GetAllAsync(e => e.DateCreated <= dateTime && (e.Status == ListingStatus.OPEN || e.Status == ListingStatus.FINALIZED));
+            return GetAllAsync(e => (e.DateCreated <= dateTime &&  e.Status == ListingStatus.FINALIZED) || e.AmountAvailable_Amount <= 0);
         }
 
         public Task<bool> SaveChangesAsync()
